@@ -1,8 +1,9 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:untitled/screens/Components/myButton.dart';
-import 'package:untitled/utils.dart';
+import 'package:untitled/screens/Components/utils.dart';
 
 import '../../main.dart';
 
@@ -26,6 +27,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: HexColor("#4169E1"),
       body: SingleChildScrollView(
           child: Center(
               child: Form(

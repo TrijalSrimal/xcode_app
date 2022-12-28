@@ -1,21 +1,21 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:provider/provider.dart';
-import 'package:untitled/screens/Components/database.dart';
-import 'package:untitled/screens/Profile/pro.dart';
-import '../Components/NavBar.dart';
 
-class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+import '../Components/NavBar.dart';
+import '../Components/database.dart';
+import 'pro.dart';
+
+class Profile extends StatefulWidget {
+  const Profile({Key? key}) : super(key: key);
 
   @override
-  State<Home> createState() => _HomeState();
+  State<Profile> createState() => _ProfileState();
 }
 
-class _HomeState extends State<Home> {
+class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return StreamProvider<DocumentSnapshot?>.value(
@@ -30,7 +30,12 @@ class _HomeState extends State<Home> {
           ),
           drawer: NavBar(),
           body: Container(
-            )),
+            child: Column(
+              children: [
+                userprolist(),
+              ],
+            ),
+          )),
     );
   }
 }
