@@ -2,9 +2,10 @@ import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:untitled/screens/Components/myButton.dart';
-import 'package:untitled/screens/Login/Registration.dart';
-import 'package:untitled/utils.dart';
+
+import 'package:untitled/screens/Components/utils.dart';
 
 import '../home/home.dart';
 
@@ -54,17 +55,18 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
       Utils.showSnackBar(e.toString());
     }
   }
+
   Future signOut() async {
-     FirebaseAuth.instance.signOut();
+    FirebaseAuth.instance.signOut();
   }
 
   @override
   Widget build(BuildContext context) => isEmailVerified
       ? Home()
       : Scaffold(
-          backgroundColor: Colors.grey[600],
+          backgroundColor: HexColor("#4169E1"),
           appBar: AppBar(
-            backgroundColor: Colors.black,
+            backgroundColor: HexColor("#4169E1"),
             title: Text("Verify Email"),
           ),
           body: SingleChildScrollView(
@@ -72,7 +74,11 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(height: 24),
-              Text("A verification email has been sent"),
+              Text("A verification email has been sent",
+                  style: TextStyle(
+                      fontFamily: "Sarabun",
+                      fontSize: 30,
+                      color: Colors.white)),
               SizedBox(height: 24),
               MyButton(onTap: sendVerificationEmail, text: "Resend Email"),
               SizedBox(height: 24),
