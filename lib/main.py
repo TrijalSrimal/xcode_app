@@ -6,7 +6,7 @@ import requests
 from bs4 import BeautifulSoup as bs
 
 data = []
-r = requests.get('https://www.youtube.com/playlist?list=PLfqMhTWNBTe3H6c9OGXb5_6wcc1Mca52n')
+r = requests.get('https://www.youtube.com/playlist?list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ')
 page = r.text
 soup=bs(page,'html.parser')
 b  =  open("a.html","w",encoding="utf_8")

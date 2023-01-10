@@ -1,3 +1,6 @@
+
+
+
 List javacourses = [
   'https://www.youtube.com/watch?v=yRpLlJmRo2w\\u0026list=PLfqMhTWNBTe3LtFWcvwpqTkUSlB32kJop\\u0026index=1',
   'https://www.youtube.com/watch?v=LusTv0RlnSU\\u0026list=PLfqMhTWNBTe3LtFWcvwpqTkUSlB32kJop\\u0026index=2',
@@ -97,12 +100,12 @@ List WebDev = [
   'https://www.youtube.com/watch?v=XuGaq24wixg\\u0026list=PLfqMhTWNBTe3H6c9OGXb5_6wcc1Mca52n\\u0026index=56',
   'https://www.youtube.com/watch?v=Dm0K3x9yCkg\\u0026list=PLfqMhTWNBTe3H6c9OGXb5_6wcc1Mca52n\\u0026index=57',
 ];
-String lastid = "";
+List Flutter = ['https://www.youtube.com/watch?v=1ukSR1GRtMU\\u0026list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ\\u0026index=1', 'https://www.youtube.com/watch?v=bKueYVtV0eA\\u0026list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ\\u0026index=2', 'https://www.youtube.com/watch?v=FLQ-Vhw1NYQ\\u0026list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ\\u0026index=3', 'https://www.youtube.com/watch?v=TSIhiZ5jRB0\\u0026list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ\\u0026index=4', 'https://www.youtube.com/watch?v=C5lpPjoivaw\\u0026list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ\\u0026index=5', 'https://www.youtube.com/watch?v=km2P_KQJyO0\\u0026list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ\\u0026index=6', 'https://www.youtube.com/watch?v=zwPBMg3SHVU\\u0026list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ\\u0026index=7', 'https://www.youtube.com/watch?v=Hxh6nNHSUjo\\u0026list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ\\u0026index=8', 'https://www.youtube.com/watch?v=ABmqtI7ec7E\\u0026list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ\\u0026index=9', 'https://www.youtube.com/watch?v=H0cJ0gUlgE8\\u0026list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ\\u0026index=10', 'https://www.youtube.com/watch?v=a6oKFvGuTH4\\u0026list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ\\u0026index=11', 'https://www.youtube.com/watch?v=siFU8c_Heu0\\u0026list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ\\u0026index=12', 'https://www.youtube.com/watch?v=RdPkFd6_fTA\\u0026list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ\\u0026index=13', 'https://www.youtube.com/watch?v=zNZvuP8h1vs\\u0026list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ\\u0026index=14', 'https://www.youtube.com/watch?v=c063ddhWafo\\u0026list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ\\u0026index=15', 'https://www.youtube.com/watch?v=p5dkB3Mrxdo\\u0026list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ\\u0026index=16', 'https://www.youtube.com/watch?v=_AC90CiDoKA\\u0026list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ\\u0026index=17', 'https://www.youtube.com/watch?v=QgQJJ0y0A6w\\u0026list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ\\u0026index=18', 'https://www.youtube.com/watch?v=XIxahpXU_QE\\u0026list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ\\u0026index=19', 'https://www.youtube.com/watch?v=jAxNZYX7mHM\\u0026list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ\\u0026index=20', 'https://www.youtube.com/watch?v=aqePcMyeoIY\\u0026list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ\\u0026index=21', 'https://www.youtube.com/watch?v=WghpP9W2vXo\\u0026list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ\\u0026index=22', 'https://www.youtube.com/watch?v=WG5tJIAq5b0\\u0026list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ\\u0026index=23', 'https://www.youtube.com/watch?v=pDzQGolJayE\\u0026list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ\\u0026index=24', 'https://www.youtube.com/watch?v=nHsxIQ9KMn0\\u0026list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ\\u0026index=25', 'https://www.youtube.com/watch?v=WdXcJdhWcEY\\u0026list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ\\u0026index=26', 'https://www.youtube.com/watch?v=AqsmaT1U6sQ\\u0026list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ\\u0026index=27', 'https://www.youtube.com/watch?v=9lCQhwo8WT4\\u0026list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ\\u0026index=28', 'https://www.youtube.com/watch?v=HemchBJQdgM\\u0026list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ\\u0026index=29', 'https://www.youtube.com/watch?v=KIAwGfnoteE\\u0026list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ\\u0026index=30', 'https://www.youtube.com/watch?v=c7Ap0iLwv6k\\u0026list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ\\u0026index=31', 'https://www.youtube.com/watch?v=nLlVANBmFJM\\u0026list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ\\u0026index=32', 'https://www.youtube.com/watch?v=NDulhXVcLuI\\u0026list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ\\u0026index=33', 'https://www.youtube.com/watch?v=TdWhYERuv7g\\u0026list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ\\u0026index=34', 'https://www.youtube.com/watch?v=j6c_vHdbUfg\\u0026list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ\\u0026index=35'];
 int duration = 0;
-
+String url = "";
 class manage {
-  void set(String id, int duration) {
-    lastid = id;
-    duration = duration;
+  void set(int durationi, String urli) {
+    duration = durationi;
+    url = urli;
   }
 }

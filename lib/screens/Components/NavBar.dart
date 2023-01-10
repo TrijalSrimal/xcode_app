@@ -9,7 +9,8 @@ import 'package:untitled/screens/Components/course_player.dart';
 import 'package:untitled/screens/Components/database.dart';
 import 'package:untitled/screens/Courses/Course_home.dart';
 import 'package:untitled/screens/Profile/profile.dart';
-
+import '../Courses/CourseRootTree.dart';
+import 'constants.dart' as c;
 import '../home/home.dart';
 
 class NavBar extends StatelessWidget {
@@ -33,11 +34,11 @@ class NavBar extends StatelessWidget {
         ));
   }
 
-  Future<void> navigateToCourses(context) async {
+  Future<void> navigateToCourseRoot(context) async {
     Navigator.push(
         context,
         PageTransition(
-          child: CourseHome(),
+          child: CourseRoot(),
           type: PageTransitionType.fade,
           duration: const Duration(milliseconds: 500),
         ));
@@ -86,11 +87,12 @@ class NavBar extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.notifications),
             title: Text('Notifications'),
+            onTap: (){ ;},
           ),
           ListTile(
             leading: Icon(Icons.book_online),
             title: Text('Courses'),
-            onTap: () => navigateToCourses(context),
+            onTap: () => navigateToCourseRoot(context),
           ),
           ListTile(
             leading: Icon(Icons.abc),

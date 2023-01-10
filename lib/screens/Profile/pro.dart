@@ -74,7 +74,7 @@ class _userprolistState extends State<userprolist> {
                 radius: 110.0,
                 lineWidth: 13.0,
                 animation: true,
-                percent: data['Points']/100,
+                percent: data['Points']/110,
                 center: new Text(
                   "Monthly Progress",
                   style:

@@ -225,7 +225,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
         password: passwordController.text.trim(),
       );
       await DatabaseService(uid: FirebaseAuth.instance.currentUser!.uid)
-          .updateUserData(
+          .setInitialUserData(
               classController.text.trim(),
               nameController.text.trim(),
               regnumController.text.trim(),
