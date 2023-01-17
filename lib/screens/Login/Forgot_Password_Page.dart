@@ -1,8 +1,9 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:untitled/screens/Components/myButton.dart';
-import 'package:untitled/utils.dart';
+import 'package:untitled/screens/Components/utils.dart';
 
 import '../../main.dart';
 
@@ -26,6 +27,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: HexColor("#4169E1"),
       body: SingleChildScrollView(
           child: Center(
               child: Form(
@@ -47,17 +49,19 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                                 borderSide: BorderSide(color: Colors.white),
                               ),
                               focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.grey.shade400),
+                                borderSide:
+                                    BorderSide(color: Colors.grey.shade400),
                               ),
                               fillColor: Colors.grey.shade200,
                               filled: true,
                               hintStyle: TextStyle(color: Colors.grey[500]),
                             ),
-                            autovalidateMode: AutovalidateMode.onUserInteraction,
+                            autovalidateMode:
+                                AutovalidateMode.onUserInteraction,
                             validator: (email) =>
-                            email != null && !EmailValidator.validate(email)
-                                ? 'Enter a valid email'
-                                : null,
+                                email != null && !EmailValidator.validate(email)
+                                    ? 'Enter a valid email'
+                                    : null,
                           ),
                         ),
                         SizedBox(height: 4),
