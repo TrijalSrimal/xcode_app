@@ -40,11 +40,14 @@ class _CourseListState extends State<CourseList> {
       data = user?.data() as Map<String, dynamic>;
     List<Widget> url = courses.map((inputurl) {
       return ListTile(
-          title: Image.network(
-              YoutubeThumbnail(youtubeId: YoutubePlayer.convertUrlToId(inputurl)!)
-                  .standard()
-              ,errorBuilder: (context, error, stackTrace) {
+          title: ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: Image.network(
+                YoutubeThumbnail(youtubeId: YoutubePlayer.convertUrlToId(inputurl)!)
+                    .standard()
+                ,errorBuilder: (context, error, stackTrace) {
       return Image.network("https://thumbs.dreamstime.com/b/not-available-red-rubber-stamp-over-white-background-87242466.jpg");}),
+          ),
           onTap: () {
             int listid = int.parse(inputurl.substring(inputurl.lastIndexOf('=') + 1));
             String playid = inputurl.substring(inputurl.lastIndexOf("list=") + 5,inputurl.lastIndexOf('\\'));

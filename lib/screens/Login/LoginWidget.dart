@@ -8,8 +8,9 @@ import 'package:untitled/screens/Components/myButton.dart';
 import 'package:untitled/screens/Login/Forgot_Password_Page.dart';
 
 import '../Components/utils.dart';
-
+//tasked with login and sign up routing
 class LoginWidget extends StatefulWidget {
+  //Helps switch between login and signup
   final VoidCallback onClickedSignUp;
 
   const LoginWidget({Key? key, required this.onClickedSignUp})
@@ -20,12 +21,15 @@ class LoginWidget extends StatefulWidget {
 }
 
 class _LoginWidgetState extends State<LoginWidget> {
+  //stores the form data
   final emailController = TextEditingController();
 
   final passwordController = TextEditingController();
+  //form key is used to check if form has been filled properly or not
   final formKey = GlobalKey<FormState>();
 
   @override
+  //dispose to prevent memory leaks and data leaks
   void dispose() {
     emailController.dispose();
     passwordController.dispose();
@@ -33,9 +37,9 @@ class _LoginWidgetState extends State<LoginWidget> {
   }
 
   @override
+  //Log in screen
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: HexColor("#4169E1"),
       body: SafeArea(
         child: SingleChildScrollView(
             child: Center(
@@ -45,8 +49,8 @@ class _LoginWidgetState extends State<LoginWidget> {
               Text("""Its great to have
         you here""",
                   style: TextStyle(
+                    color: Theme.of(context).colorScheme.onBackground,
                       fontSize: 30,
-                      color: Colors.white,
                       fontFamily: "Sarabun")),
               SizedBox(height: 50),
               Image.asset("images/Login.png"),
@@ -55,8 +59,9 @@ class _LoginWidgetState extends State<LoginWidget> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 child: TextFormField(
+                  style: TextStyle(color:Colors.black),
                   controller: emailController,
-                  cursorColor: Colors.white,
+                  cursorColor: Colors.black,
                   textInputAction: TextInputAction.next,
                   decoration: InputDecoration(
                     hintText: 'Email',
@@ -69,7 +74,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                     ),
                     fillColor: Colors.grey.shade200,
                     filled: true,
-                    hintStyle: TextStyle(color: Colors.grey[500]),
+                    hintStyle: TextStyle(color: Colors.black),
+                    labelStyle: TextStyle(color: Colors.black),
                   ),
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   validator: (email) =>
@@ -82,8 +88,9 @@ class _LoginWidgetState extends State<LoginWidget> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 child: TextFormField(
+                  style: TextStyle(color:Colors.black),
                   controller: passwordController,
-                  cursorColor: Colors.white,
+                  cursorColor: Colors.black,
                   textInputAction: TextInputAction.next,
                   decoration: InputDecoration(
                     labelText: 'Password',
@@ -95,8 +102,10 @@ class _LoginWidgetState extends State<LoginWidget> {
                     ),
                     fillColor: Colors.grey.shade200,
                     filled: true,
-                    hintStyle: TextStyle(color: Colors.grey[500]),
+                    hintStyle: TextStyle(color: Colors.black),
+                    labelStyle: TextStyle(color: Colors.black),
                   ),
+
                   obscureText: true,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   validator: (value) => value != null && value.length < 6
@@ -111,7 +120,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                   child: Text(
                     'Forgot  Password?',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Theme.of(context).colorScheme.onBackground,
                       fontSize: 20,
                       fontFamily: "Sarabun",
                     ),
@@ -129,7 +138,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                 recognizer: TapGestureRecognizer()
                   ..onTap = widget.onClickedSignUp,
                 style: TextStyle(
-                    color: Colors.white, fontSize: 20, fontFamily: "Sarabun"),
+                    color: Theme.of(context).colorScheme.onBackground, fontSize: 20, fontFamily: "Sarabun"),
                 text: 'No account? Sign Up!',
               )),
             ]),
@@ -138,8 +147,9 @@ class _LoginWidgetState extends State<LoginWidget> {
       ),
     );
   }
-
+//function for signing in on clicking sign in
   Future<void> signIn() async {
+    //showing progress indicartor
     showDialog(
       context: context,
       barrierDismissible: false,
@@ -147,16 +157,18 @@ class _LoginWidgetState extends State<LoginWidget> {
         child: CircularProgressIndicator(),
       ),
     );
+    //trying to authenticate
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: emailController.text.trim(),
         password: passwordController.text.trim(),
       );
-    } on FirebaseAuthException catch (e) {
+    } on FirebaseAuthException catch (e) {//exception handling
       print(e);
       Utils.showSnackBar(e.message);
       navigatorKey.currentState!.popUntil((route) => route.isFirst);
     }
+    //going to parent route
     navigatorKey.currentState!.popUntil((route) => route.isFirst);
   }
 }

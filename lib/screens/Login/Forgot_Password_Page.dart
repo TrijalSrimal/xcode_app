@@ -6,7 +6,7 @@ import 'package:untitled/screens/Components/myButton.dart';
 import 'package:untitled/screens/Components/utils.dart';
 
 import '../../main.dart';
-
+//manages cases of forgotten password by sending password reset email to given email id
 class ForgotPasswordPage extends StatefulWidget {
   const ForgotPasswordPage({Key? key}) : super(key: key);
 
@@ -15,10 +15,12 @@ class ForgotPasswordPage extends StatefulWidget {
 }
 
 class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
+  //takes in email
   final emailController = TextEditingController();
   final formKey = GlobalKey<FormState>();
 
   @override
+  //dispose helps prevent memory leaks and data stealing
   void dispose() {
     emailController.dispose();
     super.dispose();
@@ -27,7 +29,6 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: HexColor("#4169E1"),
       body: SingleChildScrollView(
           child: Center(
               child: Form(
@@ -39,6 +40,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 25.0),
                           child: TextFormField(
+                            style: TextStyle(color:Colors.black),
                             controller: emailController,
                             cursorColor: Colors.white,
                             textInputAction: TextInputAction.next,
@@ -54,7 +56,8 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                               ),
                               fillColor: Colors.grey.shade200,
                               filled: true,
-                              hintStyle: TextStyle(color: Colors.grey[500]),
+                              hintStyle: TextStyle(color: Colors.black),
+                              labelStyle: TextStyle(color:Colors.black),
                             ),
                             autovalidateMode:
                                 AutovalidateMode.onUserInteraction,
@@ -70,7 +73,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                       ])))),
     );
   }
-
+//async function that helps in password reset, if password reset email is sent, a snackBar appears, shows message and reroutes to login page
   Future<void> resetPassword() async {
     showDialog(
       context: context,

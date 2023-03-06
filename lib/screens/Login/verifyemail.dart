@@ -8,7 +8,7 @@ import 'package:untitled/screens/Components/myButton.dart';
 import 'package:untitled/screens/Components/utils.dart';
 
 import '../home/home.dart';
-
+//deals with statuis of email verification
 class VerifyEmailPage extends StatefulWidget {
   const VerifyEmailPage({Key? key}) : super(key: key);
 
@@ -21,19 +21,21 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
   Timer? timer;
 
   @override
+  //if email is not verified, sends a verification email
   void initState() {
     super.initState();
     isEmailVerified = FirebaseAuth.instance.currentUser!.emailVerified;
     if (!isEmailVerified) {
       sendVerificationEmail();
       timer = Timer.periodic(
-        Duration(seconds: 3),
+        Duration(seconds: 2),
         (_) => checkEmailVerified(),
       ); // Timer. periodic
     }
   }
 
   @override
+  //timer is used so that verification email can be sent again after some time
   void dispose() {
     timer?.cancel();
     super.dispose();
@@ -61,6 +63,7 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
   }
 
   @override
+  //if user is verified, returns home, else stays on verification page
   Widget build(BuildContext context) => isEmailVerified
       ? Home()
       : Scaffold(

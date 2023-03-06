@@ -34,10 +34,8 @@ class _ProfileState extends State<Profile> {
       value: DatabaseService(uid: FirebaseAuth.instance.currentUser!.uid).brews,
       initialData: null,
       child: Scaffold(
-          backgroundColor: HexColor("#4169E1"),
           appBar: AppBar(
-            backgroundColor: HexColor("#4169E1"),
-            elevation: 0,
+            elevation: 10,
             title: Text("Profile", style: TextStyle(color: Colors.white, fontSize: 24,fontFamily: "Sarabun")),
             centerTitle: true,
             actions: <Widget>[

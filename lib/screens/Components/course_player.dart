@@ -11,13 +11,13 @@ import 'package:untitled/screens/Components/determinant.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import '../home/home.dart';
 import 'database.dart';
-import 'constants.dart';
+import 'constants.dart' ;
 
 // ignore: must_be_immutable
 class Yt extends StatefulWidget {
   String inputurl;
   int startAt = 0;
-  Yt({required this.inputurl, required this.startAt});
+  Yt({super.key, required this.inputurl, required this.startAt});
 
   @override
   State<Yt> createState() => _YtState(inputurl: inputurl ,startAt: startAt);
@@ -30,10 +30,10 @@ class _YtState extends State<Yt> {
   late YoutubePlayerController _controller;
   late Duration duration;
   Timer? timer;
+  // ignore: prefer_typing_uninitialized_variables
   var user;
   int points = 0;
 
-  @override
   Future<void> navigateToHome(context) async {
     Navigator.push(
         context,
@@ -57,6 +57,7 @@ class _YtState extends State<Yt> {
 
   @override
   void dispose() {
+    super.dispose();
     _controller.dispose;
     timer?.cancel();
   }
@@ -89,28 +90,25 @@ class _YtState extends State<Yt> {
     int listid = int.parse(inputurl.substring(inputurl.lastIndexOf('=') + 1));
     String playid = inputurl.substring(inputurl.lastIndexOf("list=") + 5,inputurl.lastIndexOf('\\'));
     int deviation = determinant(a: playid).diversion();
-    print(playid);
-    print(deviation);
     final user = Provider.of<DocumentSnapshot?>(context);
-    Map<String, dynamic> data = Map();
+    Map<String, dynamic> data = {};
     if (user != null) {
       data = user.data() as Map<String, dynamic>;
     }
     if (points != -1 &&
         duration.inSeconds >=
-            85 * _controller.metadata.duration.inSeconds / 100.0 &&
-        _controller.value.position.inSeconds > 1 && data['ARRAY'][listid-1+deviation] == 0) {
+            1 * _controller.metadata.duration.inSeconds / 100.0 &&
+        _controller.value.position.inSeconds > 1 && data['ARRAY'][listid-1] == 0 && currentCourse.compareTo(data['Main Course']) == 0) {
       points = 1;
       DatabaseService(uid: FirebaseAuth.instance.currentUser!.uid)
-          .updateUserPoints( data['Points'] + 1);
+          .updateUserPoints( data['Points']+1);
       List replacement = data['ARRAY'];
-      replacement[listid-1+deviation] = 1;
+      replacement[listid-1] = 1;
       DatabaseService(uid: FirebaseAuth.instance.currentUser!.uid)
           .updateUserArray(replacement);
 
       points = -1;
     }
-    print(listid);
     return StreamProvider<DocumentSnapshot?>.value(
       initialData: null,
       value: DatabaseService(uid: FirebaseAuth.instance.currentUser!.uid).brews,

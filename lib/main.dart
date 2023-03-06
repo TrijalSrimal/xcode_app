@@ -2,22 +2,24 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:untitled/screens/Components/Mythemes.dart';
 import 'package:untitled/screens/Login/auth_page.dart';
 import 'package:untitled/screens/Login/verifyemail.dart';
 import 'package:untitled/screens/Components/utils.dart';
-
-import 'screens/Login/LoginWidget.dart';
-import 'screens/home/home.dart';
-
+import 'firebase_options.dart';
+//Defining navigator key to ease the popping and pushing of routes in login, signup, etc
 final navigatorKey = GlobalKey<NavigatorState>();
-
 void main() async {
+  //Initializing Firebase App
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  //After initialization, building material app
   runApp(MaterialApp(
-    routes: {
-      '/home': (context) => Home(),
-    },
+    themeMode: ThemeMode.system,
+    theme: Mythemes.lightTheme,
+    darkTheme: Mythemes.darkTheme,
     scaffoldMessengerKey: Utils.messengerKey,
     navigatorKey: navigatorKey,
     home: MainPage(),
@@ -28,6 +30,7 @@ class MainPage extends StatelessWidget {
   const MainPage({Key? key}) : super(key: key);
 
   @override
+  //Listening for auth changes from Firebase Auth via streams
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: HexColor("#4169E1"),

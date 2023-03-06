@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:untitled/screens/Login/sign_up.dart';
 
 import 'LoginWidget.dart';
-
+//main authentication page, tasked with routing of widgets of login and signup on basis of auth state
 class AuthPage extends StatefulWidget {
   const AuthPage({Key? key}) : super(key: key);
 

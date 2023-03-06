@@ -31,130 +31,110 @@ class _HomeState extends State<Home> {
           ));
     }
 
-    return StreamProvider<DocumentSnapshot?>.value(
-        value: DatabaseService(uid: FirebaseAuth.instance.currentUser!.uid).brews,
-        initialData: null,
-        child: SafeArea(
-          child: Scaffold(
-              backgroundColor: HexColor("#4169E1"),
-              appBar: AppBar(
-                backgroundColor: HexColor("#4169E1"),
-                elevation: 0,
-                toolbarHeight: 20,
-              ),
-              drawer: NavBar(),
-              body: Container(
-                child: Column(
-                  children: [
-                    Flexible(
-                      flex:1,
-                      child: Column(children: [
-                        Center(
-                          child: CircleAvatar(
-                            radius:50,
-                            child: ClipOval(
-                              child: Image.asset(
-                                'images/X_CODE.jpg',
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ),
+    return Scaffold(
+        appBar: AppBar(
+          elevation: 0,
+          toolbarHeight: 20,
+        ),
+        drawer: NavBar(),
+        body: Container(
+          child: Column(
+            children: [
+              Flexible(
+                flex:1,
+                child: Column(children: [
+                  Center(
+                    child: CircleAvatar(
+                      radius:50,
+                      child: ClipOval(
+                        child: Image.asset(
+                          'images/X_CODE.jpg',
+                          fit: BoxFit.cover,
                         ),
-                        const SizedBox(height:8),
-                        Center(child: Text("Hi ${FirebaseAuth.instance.currentUser!.displayName},", style: const TextStyle(
-                          color: Colors.white,
-                          fontFamily: "Sarabun",
-                          fontSize: 20,
-                        )),),
-                        const SizedBox(height:6),
-                        const Center(child: Text("It's a great day to learn!", style: TextStyle(
-                          color: Colors.white,
-                          fontFamily: "Sarabun",
-                          fontSize: 16,
-                        )),),
-                        const SizedBox(height:30),
-                        Flexible(
-                          fit: FlexFit.tight,
-                          flex: 1,
-                          child: Container(
-                            decoration: const BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.only(topLeft: Radius.circular(50),topRight: Radius.circular(50))
-                            ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height:8),
+                  Center(child: Text("Hi ${FirebaseAuth.instance.currentUser!.displayName},", style: const TextStyle(
+                    color: Colors.white,
+                    fontFamily: "Sarabun",
+                    fontSize: 20,
+                  )),),
+                  const SizedBox(height:6),
+                  const Center(child: Text("It's a great day to learn!", style: TextStyle(
+                    color: Colors.white,
+                    fontFamily: "Sarabun",
+                    fontSize: 16,
+                  )),),
+                  const SizedBox(height:30),
+                  Flexible(
+                    fit: FlexFit.tight,
+                    flex: 1,
+                      child: Container(
+                        decoration:  BoxDecoration(
+                          color: Theme.of(context).colorScheme.primaryContainer,
+                            borderRadius: BorderRadius.only(topLeft: Radius.circular(50),topRight: Radius.circular(50))
+                        ),
 
-                            child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children:[
+                        child: SingleChildScrollView(
+                          child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children:[
 
-                                  const SizedBox(height: 30),
-                                  Center(
-                                    child: Text("  The key to become best at anything ", style: TextStyle(
-                                      color: HexColor("#000000"),
-                                      fontFamily: "Sarabun",
-                                      fontSize: 24,
-                                    )),
+                                const SizedBox(height: 30),
+                                Center(
+                                  child: Text("""
+FEEL  THE  CODE
+
+'Code is like humor. When you have
+to explain it, it's bad.' -
+Cory  House
+                                  """, textAlign: TextAlign.center,style: TextStyle(
+                                    fontFamily: "Sarabun",
+                                    fontSize: 24,
+                                  )),
+                                ),
+                                const SizedBox(height: 10),
+                            Row(
+                                children: <Widget>[
+                                  const Expanded(
+                                      child: Divider(thickness: 2,color: Colors.black)
                                   ),
-                                  Center(
-                                    child: Text("is consistency. Therefore, ", style: TextStyle(
-                                      color: HexColor("#000000"),
-                                      fontFamily: "Sarabun",
-                                      fontSize: 24,
-                                    )),
+                                  Text("  Continue Watching  ", style: TextStyle(
+                                    color: Theme.of(context).colorScheme.primary,
+                                    fontFamily: "Sarabun",
+                                    fontSize: 24,
+                                  )),
+                                  const Expanded(
+                                      child: Divider(thickness: 2,color: Colors.black)
                                   ),
-                                  const SizedBox(height: 10),
-                                  Center(
-                                    child: Text("while(!(succeed = try()));", style: TextStyle(
-                                      color: HexColor("#000000"),
-                                      fontFamily: "Sarabun",
-                                      fontSize: 24,
-                                    )),
-                                  ),
-                                  const SizedBox(height: 50),
-
-                                  Row(
-                                      children: <Widget>[
-                                        const Expanded(
-                                            child: Divider(thickness: 2,color: Colors.black)
-                                        ),
-
-                                        Text("  Continue Watching  ", style: TextStyle(
-                                          color: HexColor("#4169E1"),
-                                          fontFamily: "Sarabun",
-                                          fontSize: 24,
-                                        )),
-
-                                        const Expanded(
-                                            child: Divider(thickness: 2,color: Colors.black)
-                                        ),
-                                      ]
-                                  ),
-                                  const SizedBox(height:20),
-                                  ListTile(
-                                      title: Image.network( c.url.compareTo("")==0? "https://thumbs.dreamstime.com/b/not-available-red-rubber-stamp-over-white-background-87242466.jpg":YoutubeThumbnail(youtubeId: YoutubePlayer.convertUrlToId(c.url)).standard()
-                                          ,errorBuilder: (context, error, stackTrace) {
-                                  return Image.asset("images/X_CODE.jpg");//do something
-                                  },),
-
-                                      onTap: (){
-                                        if(c.url.compareTo("")==0)
-                                          {
-                                            return null;
-                                          }
-                                        else
-                                          {
-                                            navigateToParent_player(context, c.url, c.duration);
-                                          }
-                                      }),
                                 ]
                             ),
+                                const SizedBox(height:20),
+                                ListTile(
+                                    title: ClipRRect(
+                                      borderRadius: BorderRadius.circular(20),
+                                      child: Image.network(YoutubeThumbnail(youtubeId: YoutubePlayer.convertUrlToId(c.url)).standard()
+                                        ,errorBuilder: (context, error, stackTrace) {
+                                              return Image.network("https://images.unsplash.com/photo-1471879832106-c7ab9e0cee23?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1073&q=80");
+                                        },),
+                                    ),
+
+                                    onTap: (){
+                                      if(c.url.compareTo("")!=0)
+                                        {
+                                          navigateToParent_player(context, c.url, c.duration);
+                                      }
+                                    }),
+                              ]
                           ),
-                        )
-                      ]),
-                    )
-                  ],
-                ),
-              )),
-        ),
-      );
+                        ),
+                      ),
+                    ),
+                ]),
+              )
+            ],
+          ),
+        ));
   }
 }

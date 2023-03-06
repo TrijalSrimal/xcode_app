@@ -1,19 +1,17 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:provider/provider.dart';
 import 'package:untitled/main.dart';
-import 'package:untitled/screens/Components/course_player.dart';
-import 'package:untitled/screens/Components/database.dart';
-import 'package:untitled/screens/Courses/Course_home.dart';
+import 'package:untitled/screens/LeaderBoard/notifications.dart';
 import 'package:untitled/screens/Profile/profile.dart';
 import '../Courses/CourseRootTree.dart';
-import 'constants.dart' as c;
 import '../home/home.dart';
 
 class NavBar extends StatelessWidget {
+  const NavBar({super.key});
+
   Future<void> navigateToHome(context) async {
     Navigator.push(
         context,
@@ -38,7 +36,16 @@ class NavBar extends StatelessWidget {
     Navigator.push(
         context,
         PageTransition(
-          child: CourseRoot(),
+          child: const CourseRoot(),
+          type: PageTransitionType.fade,
+          duration: const Duration(milliseconds: 500),
+        ));
+  }
+  Future<void> navigateToLead(context) async {
+    Navigator.push(
+        context,
+        PageTransition(
+          child: const LeaderBoard(),
           type: PageTransitionType.fade,
           duration: const Duration(milliseconds: 500),
         ));
@@ -51,7 +58,6 @@ class NavBar extends StatelessWidget {
         ? "N/A"
         : FirebaseAuth.instance.currentUser!.displayName.toString();
     String email = user!.email != null ? user.email.toString() : "N/A";
-    String uid = user!.uid != null ? user.uid.toString() : "N/A";
     return Drawer(
       child: ListView(
         // Remove padding
@@ -71,42 +77,47 @@ class NavBar extends StatelessWidget {
               ),
             ),
             decoration: BoxDecoration(
-              color: HexColor("#4169E1"),
+              color: Theme.of(context).colorScheme.background,
             ),
           ),
           ListTile(
-            leading: Icon(Icons.person),
-            title: Text('Profile'),
+            leading: const Icon(Icons.person),
+            title: const Text('Profile'),
             onTap: () => navigateToProfile(context),
           ),
           ListTile(
-            leading: Icon(Icons.home),
-            title: Text('Home'),
+            leading: const Icon(Icons.home),
+            title: const Text('Home'),
             onTap: () => navigateToHome(context),
           ),
           ListTile(
-            leading: Icon(Icons.notifications),
-            title: Text('Notifications'),
-            onTap: (){ ;},
+            leading: const Icon(Icons.notifications),
+            title: const Text('Leaderboard'),
+            onTap: (){ navigateToLead(context);},
           ),
           ListTile(
-            leading: Icon(Icons.book_online),
-            title: Text('Courses'),
+            leading: const Icon(Icons.book_online),
+            title: const Text('Courses'),
             onTap: () => navigateToCourseRoot(context),
           ),
           ListTile(
-            leading: Icon(Icons.abc),
-            title: Text('About Us'),
+            leading: const Icon(Icons.share),
+            title: const Text('FAQ'),
             onTap: () => null,
           ),
           ListTile(
-            leading: Icon(Icons.share),
-            title: Text('Links'),
+            leading: const Icon(Icons.abc),
+            title: const Text('About Us'),
             onTap: () => null,
           ),
           ListTile(
-            title: Text('Log Out'),
-            leading: Icon(Icons.exit_to_app),
+            leading: const Icon(Icons.share),
+            title: const Text('Links'),
+            onTap: () => null,
+          ),
+          ListTile(
+            title: const Text('Log Out'),
+            leading: const Icon(Icons.exit_to_app),
             onTap: () {
               navigatorKey.currentState!.popUntil((route) => route.isFirst);
               FirebaseAuth.instance.signOut();

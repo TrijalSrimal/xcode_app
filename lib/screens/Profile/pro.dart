@@ -4,7 +4,7 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:provider/provider.dart';
-import 'package:untitled/screens/Components/myButton.dart';
+import 'package:untitled/screens/Components/constants.dart';
 import 'package:untitled/screens/Profile/edit_profile.dart';
 
 class userprolist extends StatefulWidget {
@@ -32,9 +32,11 @@ class _userprolistState extends State<userprolist> {
     Map<String, dynamic> data = new Map();
     if(user!= null)
       data = user?.data() as Map<String, dynamic>;
+    mainCourse = data['Main Course'];
     return Flexible(
       flex:1,
       child: Column(children: [
+        SizedBox(height:10),
         Center(
           child: CircleAvatar(
             radius:50,
@@ -60,7 +62,7 @@ class _userprolistState extends State<userprolist> {
           flex: 1,
           child: Container(
             decoration: BoxDecoration(
-                color: Colors.white,
+                color: Theme.of(context).colorScheme.primaryContainer,
                 borderRadius: BorderRadius.only(topLeft: Radius.circular(50),topRight: Radius.circular(50))
             ),
 
@@ -68,30 +70,36 @@ class _userprolistState extends State<userprolist> {
               crossAxisAlignment: CrossAxisAlignment.center,
             children:[
               SizedBox(height:20),
-              Text("Achievements" ,style: TextStyle(color: HexColor("#4169E1"), fontFamily: "Sarabun", fontSize: 30)),
+              Text("Achievements" ,style: TextStyle(color: Theme.of(context).colorScheme.primary, fontFamily: "Sarabun", fontSize: 30)),
               SizedBox(height: 26),
               new CircularPercentIndicator(
                 radius: 110.0,
                 lineWidth: 13.0,
                 animation: true,
-                percent: data['Points']/110,
+                //percent: (data['Points']/data['ARRAY'].length)*100,
+                percent:0.9,
                 center: new Text(
-                  "Monthly Progress",
+                  "Course Progress",
                   style:
-                  new TextStyle(fontFamily: "Sarabun", fontSize: 20.0 , color:HexColor("#4169E1"),),
+                  new TextStyle(fontFamily: "Sarabun", fontSize: 20.0 , color:Theme.of(context).colorScheme.primary,),
                 ),
                 circularStrokeCap: CircularStrokeCap.round,
                 progressColor: HexColor("#E141B9"),
               ),
               ListTile(
-            leading: Icon(Icons.ac_unit_sharp,color: HexColor("#4169E1"),),
-            title: Text("Points: " + data['Points'].toString(),style: TextStyle(color:HexColor("#4169E1"), fontFamily: "Sarabun", fontSize: 20)),
+            leading: Icon(Icons.ac_unit_sharp,color: Theme.of(context).colorScheme.primary,),
+            title: Text("Points: " + data['Points'].toString(),style: TextStyle(color:Theme.of(context).colorScheme.primary, fontFamily: "Sarabun", fontSize: 20)),
             onTap: () => null,
               ),
               ListTile(
-            leading: Icon(Icons.stream,color: HexColor("#4169E1"),),
-            title: Text("Streaks: " + data['Coding Streak'].toString(),style: TextStyle(color: HexColor("#4169E1"), fontFamily: "Sarabun", fontSize: 20)),
+            leading: Icon(Icons.stream,color: Theme.of(context).colorScheme.primary,),
+            title: Text("Streaks: " + data['Coding Streak'].toString(),style: TextStyle(color: Theme.of(context).colorScheme.primary, fontFamily: "Sarabun", fontSize: 20)),
             onTap: () => null,
+              ),
+              ListTile(
+                leading: Icon(Icons.book,color: Theme.of(context).colorScheme.primary,),
+                title: Text("Main Course: " + data['Main Course'].toString(),style: TextStyle(color: Theme.of(context).colorScheme.primary, fontFamily: "Sarabun", fontSize: 20)),
+                onTap: () => null,
               ),
             ]
             ),

@@ -28,13 +28,13 @@ class _EditWidget2State extends State<EditWidget2> {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<DocumentSnapshot?>(context);
-    Map<String, dynamic> data = new Map();
-    if (user != null) data = user?.data() as Map<String, dynamic>;
+    Map<String, dynamic> data = {};
+    if (user != null) data = user.data() as Map<String, dynamic>;
     return StreamProvider<DocumentSnapshot?>.value(
       value: DatabaseService(uid: FirebaseAuth.instance.currentUser!.uid).brews,
       initialData: null,
       child: IconButton(
-        icon: Icon(
+        icon: const Icon(
           Icons.edit,
           color: Colors.white,
         ),
